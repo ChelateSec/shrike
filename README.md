@@ -2,6 +2,9 @@
 
 **Open-source security scanner for AI agents in CI/CD pipelines.**
 
+<img width="1024" height="304" alt="image" src="https://github.com/user-attachments/assets/c1f84809-9502-441c-96da-5318d28cc37d" />
+
+
 Shrike detects vulnerabilities in GitHub workflows where AI agents can be exploited—before attackers find them.
 
 ---
