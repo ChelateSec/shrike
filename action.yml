@@ -1,0 +1,51 @@
+name: 'Shrike Security Scanner'
+description: 'Scan GitHub workflows for AI agent security risks and workflow abuse patterns'
+author: 'Chelate Security'
+
+branding:
+  icon: 'shield'
+  color: 'red'
+
+inputs:
+  scan-path:
+    description: 'Path to scan (default: current directory)'
+    required: false
+    default: '.'
+  fail-on:
+    description: 'Fail on this severity or higher (critical, high, medium, low)'
+    required: false
+    default: 'high'
+  upload-sarif:
+    description: 'Upload SARIF results to GitHub Code Scanning'
+    required: false
+    default: 'true'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Download Shrike
+      shell: bash
+      run: |
+        echo "Downloading Shrike..."
+        curl -sL https://github.com/chelate/shrike/releases/latest/download/shrike-linux-amd64 -o /tmp/shrike
+        chmod +x /tmp/shrike
+
+    - name: Run Shrike Scan
+      shell: bash
+      run: |
+        echo "Running Shrike security scan..."
+        /tmp/shrike scan "${{ inputs.scan-path }}" \
+          --fail-on "${{ inputs.fail-on }}" \
+          --sarif > shrike-results.sarif || true
+
+    - name: Upload SARIF to GitHub Security
+      if: inputs.upload-sarif == 'true'
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: shrike-results.sarif
+        category: shrike
+
+    - name: Check Results
+      shell: bash
+      run: |
+        /tmp/shrike scan "${{ inputs.scan-path }}" --fail-on "${{ inputs.fail-on }}"

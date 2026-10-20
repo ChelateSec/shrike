@@ -1,0 +1,35 @@
+# Example: Using Shrike as a GitHub Action
+# Place this in .github/workflows/shrike-security.yml
+
+name: Shrike Security Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run weekly on Mondays
+    - cron: '0 0 * * 1'
+
+jobs:
+  shrike-scan:
+    name: Scan Workflows for Security Issues
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write  # Required for SARIF upload
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Shrike Security Scanner
+        uses: chelate/shrike@v1
+        with:
+          scan-path: '.'
+          fail-on: 'high'  # Fail on high or critical findings
+          upload-sarif: 'true'
+
+      # The action automatically uploads SARIF to GitHub Security tab
+      # View results at: https://github.com/owner/repo/security/code-scanning

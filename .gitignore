@@ -1,0 +1,40 @@
+# Binaries
+shrike
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test binaries
+*.test
+
+# Build artifacts
+dist/
+build/
+
+# Go workspace
+go.work
+go.work.sum
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Reports (generated)
+shrike-findings.md
+shrike-findings.json
+shrike-findings.sarif
+
+# Backup
+*_OLD.md
+*_old.*
+
+# Test data
+test-repo/.github/workflows/*.yml
+
+# OS
+.DS_Store
+Thumbs.db

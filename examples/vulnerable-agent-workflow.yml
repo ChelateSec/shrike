@@ -1,0 +1,49 @@
+# Example: VULNERABLE AI Agent Workflow
+# This workflow has CRITICAL security issues that Shrike will detect
+# DO NOT use this pattern in production!
+
+name: Vulnerable AI Agent (EXAMPLE ONLY - DO NOT USE)
+
+on:
+  issues:  # ⚠️ Outsider-triggerable
+    types: [opened, edited]
+
+jobs:
+  ai-response:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write  # ⚠️ Write access
+      issues: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: AI Agent Response
+        uses: anthropics/claude-code-action@v1
+        with:
+          # ⚠️ CRITICAL: Untrusted input directly in prompt
+          prompt: "Fix this issue: ${{ github.event.issue.title }} - ${{ github.event.issue.body }}"
+
+          # ⚠️ CRITICAL: Bash execution enabled
+          claude_args: "--tools Bash,Write,Edit"
+
+          # ⚠️ CRITICAL: No authorization gate - anyone can trigger
+          allowed_non_write_users: "*"
+
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}  # ⚠️ Sensitive secret in scope
+
+# Shrike will report this as CRITICAL:
+#
+# CRITICAL - AI agent triggerable by any GitHub user without authorization
+# Triggerable: Any GitHub user via issues, no authorization gate
+# Impact: Agent execution with contents:write, tools: Bash, Write, Edit;
+#         has access to secrets; receives untrusted input
+#
+# Attack scenario:
+# 1. Attacker opens issue with title/body containing malicious prompt
+# 2. Agent executes with Bash access and write token
+# 3. Attacker can: push to repo, exfiltrate secrets, modify code
