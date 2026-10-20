@@ -51,7 +51,7 @@ AI agents in CI/CD introduce **unique risks**:
 
 ## The Solution: Agentic CI/CD Security Platform
 
-### Phase 1: Shrike (Open Source Scanner) ✅ **← YOU ARE HERE**
+### Phase 1: Shrike (Open Source Scanner) - **← YOU ARE HERE**
 
 **What it does:**
 - Scans GitHub workflows for agentic vulnerabilities

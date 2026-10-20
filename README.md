@@ -96,9 +96,9 @@ jobs:
     steps:
       - uses: anthropics/claude-code-action@v1
         with:
-          prompt: "${{ github.event.issue.body }}"  # ⚠️ Attacker controls this
-          claude_args: "--tools Bash"               # ⚠️ Shell access
-          allowed_non_write_users: "*"              # ⚠️ No gate!
+          prompt: "${{ github.event.issue.body }}"  #  Attacker controls this
+          claude_args: "--tools Bash"               #  Shell access
+          allowed_non_write_users: "*"              #  No gate!
 ```
 
 **Shrike output:**
@@ -137,10 +137,10 @@ Results appear in your repository's **Security** tab.
 ## Why Shrike?
 
 **Traditional security tools don't understand AI agents:**
-- ❌ They see "agent action" and stop
-- ❌ Don't check authorization gates like `allowed_non_write_users`
-- ❌ Don't understand agent tool configurations
-- ❌ Miss prompt injection vectors in CI/CD
+- - They see "agent action" and stop
+- - Don't check authorization gates like `allowed_non_write_users`
+- - Don't understand agent tool configurations
+- - Miss prompt injection vectors in CI/CD
 
 **Shrike is the first scanner built for agentic CI/CD security.**
 
@@ -180,9 +180,9 @@ Reach out: security@chelate.tech
 
 ## Supported Platforms
 
-- ✅ Linux (amd64, arm64)
-- ✅ macOS (Intel, Apple Silicon)
-- ✅ Windows (amd64)
+- - Linux (amd64, arm64)
+- - macOS (Intel, Apple Silicon)
+- - Windows (amd64)
 
 ---
 
@@ -202,7 +202,7 @@ MIT License - see [LICENSE](LICENSE)
 
 ---
 
-**Find AI-agent-in-CI risk before attackers do.** 🛡️
+**Find AI-agent-in-CI risk before attackers do.** 
 
 **Website**: https://chelate.tech
 **GitHub**: https://github.com/w3shinew/shrike

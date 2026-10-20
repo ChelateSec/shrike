@@ -127,7 +127,7 @@ Results appear in your repository's **Security** tab.
 ### Critical: AI Agent Risks
 
 ```yaml
-# ❌ CRITICAL - Any GitHub user can trigger this
+# - CRITICAL - Any GitHub user can trigger this
 on: issues
 jobs:
   ai:
@@ -144,7 +144,7 @@ jobs:
 ### Critical: Classic Workflow Abuse
 
 ```yaml
-# ❌ CRITICAL - Pwn-request pattern
+# - CRITICAL - Pwn-request pattern
 on: pull_request_target
 jobs:
   test:
