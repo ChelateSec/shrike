@@ -46,11 +46,15 @@ shrike scan .
 # Scan a specific path
 shrike scan /path/to/repo
 
-# Scan remote GitHub repository
-export GITHUB_TOKEN=ghp_xxxxx
+# Scan remote GitHub repository (public repos work without token)
 shrike scan --repo owner/repo-name
 
-# Scan entire GitHub organization
+# For private repos or to avoid rate limits, use a token
+export GITHUB_TOKEN=ghp_xxxxx
+shrike scan --repo owner/private-repo
+
+# Scan entire GitHub organization (requires token)
+export GITHUB_TOKEN=ghp_xxxxx
 shrike scan --github-org your-org
 
 # Export findings as JSON
