@@ -14,7 +14,7 @@ As AI agents move into CI/CD workflows (code review, testing, deployment), they 
 1. **Can an outsider trigger this agent?** (Authorization & triggers)
 2. **What can it reach?** (Untrusted input + tools + permissions)
 
-Detects patterns like **Clinejection (CVE-2024-53257)** where any GitHub user could execute code through a misconfigured AI agent.
+Secures Agentic Workflows.
 
 ---
 
@@ -190,9 +190,7 @@ Reach out: security@chelate.tech
 
 Built by the [Chelate Security](https://chelate.tech) team.
 
-Inspired by real-world vulnerabilities:
-- Clinejection (CVE-2024-53257) - First major agentic CI/CD exploit
-- PraisonAI (CVE-2024-56171)
+Mitigating by real-world vulnerabilities: Securing the Agentic Workflows
 
 ---
 
