@@ -147,7 +147,7 @@ download_shrike() {
         BINARY_NAME="shrike.exe"
     fi
 
-    DOWNLOAD_URL="https://github.com/w3shinew/shrike/releases/${VERSION}/download/shrike-${PLATFORM}"
+    DOWNLOAD_URL="https://github.com/ChelateSec/shrike/releases/${VERSION}/download/shrike-${PLATFORM}"
     if [ "$OS" = "windows" ]; then
         DOWNLOAD_URL="${DOWNLOAD_URL}.exe"
     fi
@@ -235,9 +235,9 @@ print_next_steps() {
     echo ""
     echo -e "${BOLD}Resources:${NC}"
     echo ""
-    echo "  Documentation: https://github.com/w3shinew/shrike"
+    echo "  Documentation: https://github.com/ChelateSec/shrike"
     echo "  Website:       https://chelate.tech"
-    echo "  Issues:        https://github.com/w3shinew/shrike/issues"
+    echo "  Issues:        https://github.com/ChelateSec/shrike/issues"
     echo ""
     echo -e "${BOLD}Need help?${NC} Contact: security@chelate.tech"
     echo ""

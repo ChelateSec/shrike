@@ -30,7 +30,7 @@ curl -fsSL https://chelate.tech/install.sh | bash
 **Or install manually:**
 ```bash
 # Download the latest release
-wget https://github.com/w3shinew/shrike/releases/latest/download/shrike-linux-amd64 -O shrike
+wget https://github.com/ChelateSec/shrike/releases/latest/download/shrike-linux-amd64 -O shrike
 chmod +x shrike
 sudo mv shrike /usr/local/bin/
 ```
@@ -127,7 +127,7 @@ jobs:
       security-events: write
     steps:
       - uses: actions/checkout@v4
-      - uses: w3shinew/shrike@v1
+      - uses: ChelateSec/shrike@v1
 ```
 
 Results appear in your repository's **Security** tab.
@@ -205,4 +205,4 @@ MIT License - see [LICENSE](LICENSE)
 **Find AI-agent-in-CI risk before attackers do.** 
 
 **Website**: https://chelate.tech
-**GitHub**: https://github.com/w3shinew/shrike
+**GitHub**: https://github.com/ChelateSec/shrike
